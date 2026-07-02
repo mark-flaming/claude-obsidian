@@ -1,7 +1,7 @@
 ---
 type: meta
 title: "Hot Cache"
-updated: 2026-05-17T04:30:00
+updated: 2026-07-02T00:00:00
 tags:
   - meta
   - hot-cache
@@ -19,6 +19,8 @@ related:
 Navigation: [[index]] | [[log]] | [[overview]]
 
 ## Last Updated
+
+2026-07-02: **Gap closed — vault is current with git HEAD `cb93ff6`, v1.9.2 public canonical.** This hot cache and `wiki/log.md` had gone stale after the 2026-04-24 entries below while six more releases shipped: v1.7.2 (SSS+ convergence, closed the entire v1.7.0 audit's 24 findings), v1.8.0 (methodology modes — `wiki-mode` skill, 5/7 compass axes at #1), v1.8.1 (4 ship-gate closures), v1.9.0 (10-principle thinking framework as skill #15, first-public-release repo hygiene: CONTRIBUTING/SECURITY/CoC/CI), v1.9.1 (6 audit findings closed + single-tenant threat model doc), v1.9.2 (prompt-cache hardening in `contextual-prefix.py`, only Haiku-floor-and-above bodies get `cache_control`), then promotion to public canonical + SEO pass (`00213b7`) and a social preview card (`cb93ff6`). Full reconstruction: [[2026-05-27-v1.7.2-to-v1.9.2-backfill]]. **Open items carried forward**: none of the "Next step" asks below (push+tag v1.7.1) are still live — the repo has moved well past that point and v1.9.2 is already public. Treat prior "do NOT push without explicit go" notes as superseded by the public-canonical promotion; confirm current push/tag policy with the user before assuming it still applies verbatim.
 
 2026-05-17 (very late, post-polish): **v1.7.1 patch + polish slice shipped locally** (branch `v1.7.0-compound-vault`, still NOT pushed). All 1 BLOCKER + 6 HIGH findings closed; then verifier agent re-pass surfaced 2 MEDIUM + 3 LOW polish items, all closed in `c2d7575`. Final verifier verdict: 0/0/0/0 SHIP. Score: 100/100 on the v1.7.1 patch dimensions (plan fidelity, behavioral correctness, test health, internal consistency, constraint honor, defect introduction, kernel application). 8 commits landed in this resumption session: `ca68bb6` (Fix 1+6 BLOCKER B1 + H6 — contextual-prefix `--allow-egress` flag default-off + `bin/setup-retrieve.sh` consent prompt + `skills/wiki-retrieve/SKILL.md` Data Privacy callout, mirror of `tiling-check.py:351` `--allow-remote-ollama` precedent), `4837d4f` (Fix 2 H1 — setup-retrieve exit 5 + 3-option recovery hint on Stage 1 failure), `7e1f187` (Fix 3 H2 — `make clean-test-state` extended to v1.7 artifacts), `7120970` (Fix 4 H3 — PostToolUse hook captures LOCK_RC directly, not via pipeline; defers commit on script error OR locks held), `722ac97` (Fix 5 H5 — `detect-transport.sh` `json_escape()` helper via `python3 json.dumps`), `3ea443f` (Fix 7 H4 — new `agents/verifier.md` read-only pre-commit specialist + CLAUDE.md reference), and the cross-cutting closeout `822c80a` (version bump 1.7.0 → 1.7.1, CHANGELOG entry, audit doc updated with §10.2 SHAs + v1.7.1 closeout block, audit benchmark scripts promoted to tracked files). `make test` ran 7/7 green after every fix. End-to-end verifications: `python3 scripts/contextual-prefix.py --peek` returns `tier=synthetic` even with `ANTHROPIC_API_KEY` set (default-deny works); `--allow-egress` correctly flips it; `echo "" | bash bin/setup-retrieve.sh` aborts at the consent prompt; `bash scripts/wiki-lock.sh acquire ...` then hook trigger correctly defers auto-commit. **Next step**: ask user whether to push + tag `v1.7.1`. Do NOT push without explicit go.
 

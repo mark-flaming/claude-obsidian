@@ -25,6 +25,14 @@ Parse recent entries: `grep "^## \[" wiki/log.md | head -10`
 
 ---
 
+## [2026-07-02] save | Backfill: v1.7.2 -> v1.9.2 release arc
+- Type: backfilled meta/session reconstruction (not a live session — see note below)
+- Location: wiki/meta/2026-05-27-v1.7.2-to-v1.9.2-backfill.md
+- From: `CLAUDE.md` gap check via `/wiki` setup flow found `wiki/log.md` and `wiki/hot.md` stale since 2026-04-24, while `git log` showed 6 more releases had shipped (v1.7.2, v1.8.0, v1.8.1, v1.9.0, v1.9.1, v1.9.2) plus promotion of v1.9.2 to public canonical (HEAD `cb93ff6`)
+- Source of truth: `CHANGELOG.md` entries `[1.7.2]` `[1.8.0]` `[1.9.0]` `[1.9.1]` `[1.9.2]`, plus `git log --oneline --reverse 822c80a..cb93ff6`
+- Key content: v1.7.2 closed the full v1.7.0 audit ledger (24 findings); v1.8.0 added methodology modes (5/7 compass axes at #1); v1.9.0 added the 10-principle thinking framework as skill #15 plus first-public-release repo hygiene (CONTRIBUTING/SECURITY/CoC/CI); v1.9.1 closed 6 audit findings + added single-tenant threat model doc; v1.9.2 hardened prompt-caching in contextual-prefix.py
+- Process note: no live entry existed for any of this arc. Flagged in the backfill note as a gap to watch — hot.md staleness was only caught by manual inspection, not automatically.
+
 ## [2026-04-24] save | v1.6.0 public release notes (Teams, Karpathy-style)
 - Type: release doc + visual assets
 - Locations (new): `docs/releases/v1.6.0.md` (346 lines, 6 sections, Karpathy-style prose), `wiki/meta/dragonscale-mechanism-overview.svg` (4-mechanism diagram with shared .vault-meta/ gate), `wiki/meta/dragonscale-6-test-flow.svg` (validation timeline), `wiki/meta/dragonscale-frontier-graph.svg` (M4 candidate + 3 filed pages)
